@@ -18,5 +18,13 @@ import java.util.List;
 public interface W2_BumonMapper {
 
 
-    List<W2_Bumon> getById(int i);
+    W2_Bumon getById(int i);
+
+    List<W2_Bumon> getAll();
+
+    int bumonInsert(W2_Bumon w2Bumon);
+
+    int bumonUpdateById(W2_Bumon w2Bumon);
+
+    int deleteById(Integer id);
 }

@@ -37,6 +37,7 @@ public class DateUtils {
     public static final String partPattern = "yyMMddHHmmss";
     public static final String ticketPattern = "yyyy.MM.dd HH:mm:ss";
     public static final String settlePattern = "yyyy-MM-dd HH:mm:ss";
+    public static final String utcDataPattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static final String hour_of_minute = "HHmm";
     public static final String timeColPattern = "HH:mm:ss";
     public static final String dateFullPattern = "yyyyMMdd HH:mm:ss";
@@ -117,6 +118,7 @@ public class DateUtils {
         return targetTime.getTime();
     }
 
+
     /**
      * 获取当前时间
      * 格式：yyyyMMddHHmmss
@@ -126,6 +128,7 @@ public class DateUtils {
     public static String getCurrent(String pattern) {
         return format(new Date(), pattern);
     }
+
 
     /**
      * 获取当前时间
@@ -197,4 +200,7 @@ public class DateUtils {
         }
         return date;
     }
+
+
+
 }

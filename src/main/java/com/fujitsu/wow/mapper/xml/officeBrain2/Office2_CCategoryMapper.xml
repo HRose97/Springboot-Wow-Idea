@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fujitsu.wow.mapper.officeBrain2.Office2_CCategoryMapper">
+
+
+    <resultMap type="com.fujitsu.wow.pojo.officeBrain2.Office2_CCategory" id="resultMap">
+        <result property="categoryCD" column="ｶﾃｺﾞﾘCD"/>
+        <result property="categoryName" column="ｶﾃｺﾞﾘ名"/>
+        <result property="categoryDetails" column="ｶﾃｺﾞﾘ詳細"/>
+        <result property="displayOrder" column="表示順"/>
+        <result property="companyInCharge" column="担当会社"/>
+        <result property="mailto" column="mailto"/>
+        <result property="mailcc" column="mailcc"/>
+    </resultMap>
+
+
+    <select id="getAll" resultMap="resultMap" >
+        SELECT ｶﾃｺﾞﾘ名, ｶﾃｺﾞﾘ詳細, 表示順, 担当会社, mailto, mailcc FROM Cｶﾃｺﾞﾘ;
+    </select>
+
+    <insert id="insert" parameterType="com.fujitsu.wow.pojo.officeBrain2.Office2_CCategory">
+        INSERT INTO  Cｶﾃｺﾞﾘ  (ｶﾃｺﾞﾘCD,ｶﾃｺﾞﾘ名,ｶﾃｺﾞﾘ詳細,表示順,担当会社,mailto,mailcc)
+            VALUES (#{categoryCD},#{categoryName}, #{categoryDetails}, #{displayOrder},#{companyInCharge}, #{mailto}, #{mailcc})
+    </insert>
+
+    <select id="getBycategoryCD" resultMap="resultMap">
+        SELECT ｶﾃｺﾞﾘCD, ｶﾃｺﾞﾘ詳細, 表示順, 担当会社, mailto, mailcc FROM Cｶﾃｺﾞﾘ
+        <where>
+            1 = 1
+            AND ｶﾃｺﾞﾘCD = #{categoryCD}
+        </where>
+    </select>
+
+    <update id="updateBycategoryCD" parameterType="com.fujitsu.wow.pojo.officeBrain2.Office2_CCategory">
+        UPDATE Cｶﾃｺﾞﾘ
+            SET
+                ｶﾃｺﾞﾘ名 = #{categoryName} ,
+                ｶﾃｺﾞﾘ詳細 = #{categoryDetails} ,
+                表示順 = #{displayOrder} ,
+                担当会社 = #{companyInCharge} ,
+                mailto = #{mailto},
+                mailcc = #{mailcc}
+            <where>
+                1=1 AND ｶﾃｺﾞﾘCD = #{categoryCD}
+            </where>
+    </update>
+
+    <delete id="deleteByCategoryCD" parameterType="String">
+        DELETE FROM Cｶﾃｺﾞﾘ WHERE 1=1 AND ｶﾃｺﾞﾘCD =  #{categoryCD}
+    </delete>
+
+</mapper>

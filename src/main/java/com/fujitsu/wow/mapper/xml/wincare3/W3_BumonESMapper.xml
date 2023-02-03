@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fujitsu.wow.mapper.wincare3.W3_BumonESMapper">
 
+    
     <select id="getById" resultType="com.fujitsu.wow.pojo.wincare3.W3_BumonRS" >
-        SELECT * FROM bumonES WHERE yid='HID00031';
+        SELECT id, FROM bumonES WHERE 1=1 AND id = #{id}
     </select>
 
 </mapper>

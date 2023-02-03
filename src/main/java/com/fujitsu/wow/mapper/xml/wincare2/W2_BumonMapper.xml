@@ -2,8 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fujitsu.wow.mapper.wincare2.W2_BumonMapper">
 
-    <select id="getById" resultType="com.fujitsu.wow.pojo.wincare2.W2_Bumon" >
-        select * from bumon where id = ${id};
+    <resultMap id="resultMap" type="com.fujitsu.wow.pojo.wincare3.W3_BumonRS">
+        <result property="id" column="id"/>
+        <result property="yid" column="yid"/>
+        <result property="down" column="down"/>
+        <result property="day" column="day"/>
+        <result property="ip" column="ip"/>
+    </resultMap>
+
+
+    <select id="getAll" resultType="com.fujitsu.wow.pojo.wincare2.W2_Bumon" >
+        select
+            id, yid, down, day, ip
+                from bumon;
     </select>
+
+    <select id="getById" resultType="com.fujitsu.wow.pojo.wincare2.W2_Bumon" >
+        select
+            id, yid, down, day, ip
+                from bumon
+                    where id = ${id};
+    </select>
+
+    <insert id="bumonInsert" parameterType="com.fujitsu.wow.pojo.wincare2.W2_Bumon">
+        INSERT INTO  bumon  (yid, down, day, ip)
+            VALUES (#{yid}, #{down}, #{day}, #{ip})
+    </insert>
+
+    <update id="bumonUpdateById" parameterType="com.fujitsu.wow.pojo.wincare2.W2_Bumon">
+        UPDATE bumon
+            SET
+                yid = #{yid} ,
+                down = #{down} ,
+                day = #{day} ,
+                ip = #{ip}
+                    <where>
+                        1=1 AND id = #{id}
+                    </where>
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM bumon WHERE 1=1 AND id = #{id}
+    </delete>
 
 </mapper>
